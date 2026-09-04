@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # YOLO Container
+  yolo:
+    build:
+      context: ./yolo-service
+      dockerfile: Dockerfile
+    image: object_detection_yolo_with_fastapi-web
+    container_name: yolo-detector
+    ports:
+      - "8000:8000"
+    networks:
+      - video-network
+
+
+  # Frame Processor Service (FastAPI)
+  frame-processor:
+    build: ./frame-processor-service
+    container_name: frame-processor
+    ports:
+      - "5000:5000"
+    networks:
+      - video-network
+    environment:
+      - YOLO_API_URL=http://yolo:8000
+    depends_on:
+      - yolo
+
+  # Spring Boot Backend
+  backend:
+    build: ./webrtcyolo
+    container_name: webrtc-backend2
+    ports:
+      - "8443:8443"
+    networks:
+      - video-network
+    environment:
+      - FRAME_PROCESSOR_URL=http://frame-processor:5000
+    depends_on:
+      - frame-processor
+
+networks:
+  video-network:
+    driver: bridge

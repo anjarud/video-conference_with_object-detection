@@ -1,0 +1,33 @@
+﻿# IDEs
+.idea/
+*.iml
+.vscode/
+*.swp
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Runtime data
+yolo-service/runs/
+yolo-service/uploads/
+
+# Environment / secrets
+.env
+.env.*
+*.p12
+*.jks
+*.keystore
+
+# Java / Maven
+**/target/
+
+# Logs
+*.log
+
+# YOLO model files
+yolo-service/*.pt
+yolo-service/*.onnx

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Client 2 - Peer2</title>
+</head>
+<body>
+<h1>Client 2 - Peer2</h1>
+
+<div style="display: flex; gap: 20px;">
+    <div>
+        <h3>Meine Kamera</h3>
+        <video id="localVideo" autoplay playsinline muted width="640" height="480"></video>
+    </div>
+
+    <div style="position: relative;">
+        <h3>Remote von Peer1</h3>
+        <video id="remoteVideo" autoplay playsinline width="640" height="480"
+               style="border: 2px solid blue;"></video>
+        <canvas id="boxCanvas" width="640" height="480"
+                style="position: absolute; top: 48px; left: 0; pointer-events: none;"></canvas>
+    </div>
+</div>
+
+<br>
+
+<button onclick="start()">Kamera starten</button>
+<div id="status"></div>
+
+<script src="webrtc-utils.js"></script>
+
+<script>
+    const CLIENT_ID = 'peer2';
+    const REMOTE_CLIENT_ID = 'peer1';
+
+    async function start() {
+        const localVideo = document.getElementById('localVideo');
+        const remoteVideo = document.getElementById('remoteVideo');
+        const boxCanvas = document.getElementById('boxCanvas');
+
+        await setupWebRTC(
+            CLIENT_ID,
+            REMOTE_CLIENT_ID,
+            localVideo,
+            remoteVideo,
+            boxCanvas
+        );
+
+        document.getElementById('status').textContent =
+            'Empfange WebRTC & YOLO';
+    }
+</script>
+</body>
+</html>

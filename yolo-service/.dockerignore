@@ -1,0 +1,25 @@
+__pycache__                        # Ignores Python byte-compiled files
+*.pyc                              # Ignores compiled Python files
+*.pyo                              # Ignores optimized Python files
+*.pyd                              # Ignores Python dynamic libraries
+.Python                            # Ignores Python virtual environment
+env/                               # Ignores generic environment folders
+venv/                              # Ignores Python virtual environment folder
+pip-log.txt                        # Ignores pip log files
+pip-delete-this-directory.txt      # Ignores pip temporary directory
+.tox/                              # Ignores tox environment directory
+.coverage                          # Ignores coverage report files
+.coverage.*                        # Ignores coverage report files
+.cache                             # Ignores cache directories
+nosetests.xml                      # Ignores nose test results
+coverage.xml                       # Ignores coverage report files
+*.cover                            # Ignores coverage report files
+*.log                              # Ignores log files
+.git                               # Ignores git repository
+.gitignore                         # Ignores gitignore files
+.mypy_cache                        # Ignores mypy cache directory
+.pytest_cache                      # Ignores pytest cache directory
+.hypothesis                        # Ignores hypothesis directory
+.idea                              # Ignores IDE-specific files (e.g., from PyCharm)
+runs/
+uploads/
